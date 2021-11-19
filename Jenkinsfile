@@ -1,8 +1,14 @@
-node {
+agent any
+stages {
 	stage('Build') {
-		echo "Build"
-	}
-	stage('Test') {
-		echo "Test-12"
+		steps {
+			echo "Build"
+			echo "$PATH"
+			echo "Build Number: $env.BUILD_NUMBER"
+			echo "Build Tag : $env.BUILD_TAG"
+
+
+			}
+		}
 	}
 }
