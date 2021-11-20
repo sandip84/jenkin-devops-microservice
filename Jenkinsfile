@@ -7,7 +7,7 @@ pipeline {
     PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
   }
   stages      {
-    stage('Build') {
+    stage('dsscsc') {
       steps {
         sh 'mvn --version'
         sh 'docker version'
