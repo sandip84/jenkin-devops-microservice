@@ -24,23 +24,23 @@ pipeline {
       }
     }
 
-    stage('Test') {
-      steps {
-        sh "mvn test"
-      }
-    }
+    // stage('Test') {
+    //   steps {
+    //     sh "mvn test"
+    //   }
+    // }
 
-    stage('Integration Test') {
-      steps {
-        sh "mvn failsafe:integration-test failsafe:verify"
-      }
-    }
+    // stage('Integration Test') {
+    //   steps {
+    //     sh "mvn failsafe:integration-test failsafe:verify"
+    //   }
+    // }
 
-    stage('Package') {
-      steps {
-        sh "mvn package -DskipTests"
-      }
-    }
+    // stage('Package') {
+    //   steps {
+    //     sh "mvn package -DskipTests"
+    //   }
+    // }
 
     stage('Build Docker Image') {
       steps {
@@ -58,7 +58,7 @@ pipeline {
           //   // dockerImage.push('latest')
           // }
           docker.withRegistry("752362912519.dkr.ecr.us-east-1.amazonaws.com/currency-exchange", "aws-ecr-role") {
-            docker.image('demo').push('latest')
+            dockerImage.push()
           }          
         }
       }
