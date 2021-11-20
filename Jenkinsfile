@@ -53,13 +53,13 @@ pipeline {
     stage('Push Docker Image') {
       steps {
         script {
-          // docker.withRegistry('','dockerhub') {
-          //   dockerImage.push()
-          //   // dockerImage.push('latest')
-          // }
-          docker.withRegistry("752362912519.dkr.ecr.us-east-1.amazonaws.com/currency-exchange", 'aws-ecr-role') {
+          docker.withRegistry('','dockerhub1') {
             dockerImage.push()
-          }          
+            // dockerImage.push('latest')
+          }
+          // docker.withRegistry("752362912519.dkr.ecr.us-east-1.amazonaws.com/currency-exchange", "aws-ecr-role") {
+          //   dockerImage.push()
+          // }          
         }
       }
     }
