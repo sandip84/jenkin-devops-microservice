@@ -42,14 +42,14 @@ pipeline {
       }
     }
 
-    stage('Build Docker Image') {
-      steps {
-        // "docker buils -t sandip84/aws-currency-exchange-service-h2:$env.BUILD_TAG"
-        script {
-            dockerImage = docker.build("sandip84/aws-currency-exchange-service-h2:${env.BUILD_TAG}")
-        }
-      }
-    }
+    // stage('Build Docker Image') {
+    //   steps {
+    //     // "docker buils -t sandip84/aws-currency-exchange-service-h2:$env.BUILD_TAG"
+    //     script {
+    //         dockerImage = docker.build("sandip84/aws-currency-exchange-service-h2:${env.BUILD_TAG}")
+    //     }
+    //   }
+    // }
     // stage('Push Docker Image') {
     //   steps {
     //     script {
