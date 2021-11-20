@@ -6,7 +6,7 @@ pipeline {
     mavenHome  = tool 'myMaven'
     PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
   }
-  stages      {
+  stages {
     stage('Checkout') {
       steps {
         sh 'mvn --version'
@@ -42,15 +42,15 @@ pipeline {
       }
     }
 
-    stage('Build Docker Image')
+    stage('Build Docker Image') {
       steps {
         // "docker buils -t sandip84/aws-currency-exchange-service-h2:$env.BUILD_TAG"
         script {
             dockerImage = docker.build("sandip84/aws-currency-exchange-service-h2:${env.BUILD_TAG}")
         }
       }
-
-    stage('Push Docker Image')
+    }
+    stage('Push Docker Image') {
       steps {
         script {
           docker.withRegistry('','dockerhub') {
@@ -59,5 +59,7 @@ pipeline {
           }
         }
       }
+    }
+
   }
 }
