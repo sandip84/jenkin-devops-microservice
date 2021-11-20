@@ -46,7 +46,7 @@ pipeline {
       steps {
         // "docker buils -t sandip84/aws-currency-exchange-service-h2:$env.BUILD_TAG"
         script {
-            dockerImage = docker.build("sandip84/aws-currency-exchange-service-h2:${env.BUILD_TAG}")
+            dockerImage = docker.build("sandip84/aws-currency-exchange-service-h2:${env.BUILD_NUMBER}")
         }
       }
     }
@@ -55,7 +55,7 @@ pipeline {
         script {
           docker.withRegistry('','dockerhub') {
             dockerImage.push()
-            dockerImage.push('latest')
+            // dockerImage.push('latest')
           }
         }
       }
